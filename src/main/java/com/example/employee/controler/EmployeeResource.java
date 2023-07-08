@@ -17,7 +17,7 @@ public class EmployeeResource {
 
     @ApiOperation(value = "Create a new employee")
     @PostMapping
-    public EmployeeCreateDTO createEmployee(EmployeeCreateDTO dto) {
+    public EmployeeCreateDTO createEmployee(@RequestBody  EmployeeCreateDTO dto) {
         return employeeService.createEmployee(dto);
     }
 
@@ -29,7 +29,7 @@ public class EmployeeResource {
 
     @ApiOperation(value = "Update a employee")
     @PutMapping
-    public void updateEmployee(EmployeeUpdateDTO dto) {
+    public void updateEmployee(@RequestBody EmployeeUpdateDTO dto) {
         employeeService.updateEmployee(dto);
     }
 
