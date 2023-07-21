@@ -1,6 +1,7 @@
 package com.example.employee.domin;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,7 +15,6 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
 
     @Column(name = "first_name")
@@ -29,6 +29,7 @@ public class Employee {
     @Column(name = "hire_date")
     private LocalDate hireDate;
 
+    @NotNull
     @Column(name = "organization_id")
     private Long organizationId;
     @ManyToOne(fetch = FetchType.LAZY)

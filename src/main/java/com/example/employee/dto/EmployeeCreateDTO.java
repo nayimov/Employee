@@ -13,6 +13,6 @@ public class EmployeeCreateDTO {
     private String lastName;
     private Integer pinfl;
     private LocalDate hireDate;
-    private OrganizationCreateDTO organization;
+    private Long organizationId;
 
 }

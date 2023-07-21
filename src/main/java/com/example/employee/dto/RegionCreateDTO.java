@@ -6,6 +6,5 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RegionCreateDTO {
-    private Long id;
     private String name;
 }
