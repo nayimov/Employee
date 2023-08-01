@@ -8,6 +8,6 @@ import lombok.Setter;
 public class OrganizationDTO {
     private Long id;
     private String name;
-    private String parent;
+    private String parentId;
     private RegionDTO region;
 }

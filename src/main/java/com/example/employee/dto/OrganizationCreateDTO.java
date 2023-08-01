@@ -7,6 +7,6 @@ import lombok.Setter;
 @Setter
 public class OrganizationCreateDTO {
     private String name;
-    private String parent;
+    private String parentId;
     private RegionCreateDTO region;
 }

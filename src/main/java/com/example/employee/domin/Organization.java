@@ -17,13 +17,14 @@ public class Organization {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "parent")
-    private String parent;
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id", updatable = false, insertable = false)
+    private Organization parent;
 
     @Column(name = "region_id")
     private Long regionId;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "region_id",updatable = false,insertable = false,foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
+    @JoinColumn(name = "region_id", updatable = false, insertable = false, foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
     private Region region;
 
 }

@@ -4,6 +4,8 @@ import com.example.employee.domin.Organization;
 import com.example.employee.dto.OrganizationCreateDTO;
 import com.example.employee.dto.OrganizationDTO;
 import com.example.employee.dto.OrganizationUpdateDTO;
+import com.example.employee.exception.BadRequestException;
+import com.example.employee.exception.EntityNotFoundException;
 import com.example.employee.mapper.OrganizationMapper;
 import com.example.employee.repository.OrganizationRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,19 +23,19 @@ public class OrganizationService {
     }
 
     public OrganizationUpdateDTO updateOrganization(OrganizationUpdateDTO updateDTO) {
-        Organization organization = repository.findById(updateDTO.getId()).orElseThrow(() -> new IllegalStateException("Could not find organization"));
+        Organization organization = repository.findById(updateDTO.getId()).orElseThrow(() -> new EntityNotFoundException("Could not find organization {}", updateDTO.getId()));
         organizationMapper.updateEntity(organization, updateDTO);
         return updateDTO;
     }
 
     public void deleteOrganization(Long id) {
-        Organization organization = repository.findById(id).orElseThrow(() -> new IllegalStateException("Could not find organization"));
+        Organization organization = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Could not find organization {}",id));
         repository.delete(organization);
     }
 
 
     public OrganizationDTO getOrganization(Long id) {
-        Organization organization = repository.findById(id).orElseThrow(() -> new IllegalStateException("Could not find organization"));
+        Organization organization = repository.findById(id).orElseThrow(() -> new BadRequestException("Could not find organization"));
         return organizationMapper.getDTO(organization);
     }
 }
